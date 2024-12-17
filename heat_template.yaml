@@ -21,4 +21,11 @@ my_volume:
     type: OS::Cinder::Volume
     properties:
       size: 10
-      name: my_volume_name_DS
+      name: my_volume_name_DS666
+
+volume_attachment:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      instance_uuid: { get_resource: my_instance }
+      volume_id: { get_resource: my_volume }
+      mountpoint: /dev/vdb
